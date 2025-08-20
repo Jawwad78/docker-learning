@@ -1,19 +1,15 @@
-FROM python:3.8-slim
-
+# Stage 1: build
+FROM python:3.8-slim AS build
 WORKDIR /app
 COPY . .
+RUN apt-get update && apt-get install -y gcc python3-dev libmariadb-dev pkg-config
+RUN pip install flask mysqlclient
 
-# why: mysqlclient needs headers, pkg-config, and a compiler to build
-RUN apt-get update \
- && apt-get install -y --no-install-recommends \
-      gcc \
-      pkg-config \
-      default-libmysqlclient-dev \
-      libmariadb3 \
- && pip install --no-cache-dir flask mysqlclient \
- && apt-get purge -y gcc pkg-config default-libmysqlclient-dev \
- && apt-get autoremove -y \
- && rm -rf /var/lib/apt/lists/*
-
+# Stage 2: runtime
+FROM python:3.8-slim
+WORKDIR /app
+RUN apt-get update && apt-get install -y libmariadb3
+COPY --from=0 /usr/local /usr/local
+COPY --from=build /app /app
 EXPOSE 5002
 CMD ["python", "app.py"]

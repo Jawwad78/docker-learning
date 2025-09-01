@@ -1,8 +1,8 @@
-# 🐳 Flask + Redis + NGINX : Multi-Container Project
+# 🐳 Flask + Redis + NGINX : Multi Container Project
 
-This project is a production-style multicontainer system built with Flask, Redis, and Nginx.  
+This project is a production style multicontainer system built with Flask, Redis, and Nginx.  
 
-It demonstrates core DevOps concepts in action: containerization, persistence, configuration management, scaling, and load balancing; all orchestrated with Docker Compose.
+It demonstrates core DevOps concepts in action: containerization, scaling, and load balancing; all orchestrated with Docker Compose.
 
 ---
 

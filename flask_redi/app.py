@@ -14,7 +14,7 @@ def hello_world():
 @app.route("/count")
 def num():
     num = r.incr("visits")
-    return (f"you are the {num} visitor")
+    return (f"You are visitor number: {num}.")
 
 if __name__ == '__main__':
    app.run(host='0.0.0.0', port=5002)

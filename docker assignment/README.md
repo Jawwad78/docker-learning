@@ -7,7 +7,8 @@ It demonstrates core DevOps concepts in action: containerization, scaling, and l
 ---
 
 ## 🖼️ Demo
-![Demo](demo.gif)
+![Demo](../demo.gif)
+
 - `/` → Welcome page  
 - `/count` → Visitor counter (stored in Redis)
 
